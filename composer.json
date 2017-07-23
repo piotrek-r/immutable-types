@@ -1,0 +1,14 @@
+{
+  "name": "owl-labs/immutable-types",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Piotr Rybałtowski",
+      "email": "piotrek@owl-labs.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1"
+  }
+}
