@@ -107,9 +107,17 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
     /**
      * @return array
      */
-    public function toArray()
+    public function getData(): array
     {
         return $this->data;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->getData();
     }
 
     /**
@@ -117,7 +125,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->data);
+        return new \ArrayIterator($this->getData());
     }
 
     /**
