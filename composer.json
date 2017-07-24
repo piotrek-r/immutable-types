@@ -1,14 +1,23 @@
 {
   "name": "owl-labs/immutable-types",
+  "description": "Wrapper classes for some PHP types.",
   "type": "library",
+  "homepage": "https://github.com/owl-labs/immutable-types",
   "license": "MIT",
   "authors": [
     {
       "name": "Piotr Rybałtowski",
-      "email": "piotrek@owl-labs.com"
+      "email": "piotrek@owl-labs.com",
+      "homepage": "http://www.piotr.rybaltowski.com/"
     }
   ],
   "require": {
     "php": "^7.1"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "OwlLabs\\Type\\": "src"
+    }
   }
 }
