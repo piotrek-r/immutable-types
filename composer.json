@@ -14,10 +14,19 @@
   "require": {
     "php": "^7.1"
   },
-  "require-dev": {},
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0"
+  },
   "autoload": {
     "psr-4": {
       "OwlLabs\\Type\\": "src"
     }
+  },
+  "scripts": {
+    "check": [
+      "@cs-check"
+    ],
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf"
   }
 }

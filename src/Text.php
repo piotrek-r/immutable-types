@@ -45,7 +45,7 @@ class Text implements \JsonSerializable
      *
      * @return string
      */
-    function jsonSerialize()
+    public function jsonSerialize()
     {
         return $this->value();
     }
