@@ -42,37 +42,65 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      * @param int $key
      * @return bool
      */
-    public function exists(int $key): bool
+    public function indexExists(int $key): bool
     {
         return array_key_exists($key, $this->data);
     }
 
     /**
-     * @param int $key
+     * @param int $index
      * @param mixed $value
      * @return TypedCollection
      */
-    public function withValue(int $key, $value): TypedCollection
+    public function withValueAtIndex(int $index, $value): TypedCollection
     {
-        if (!$this->exists($key)) {
-            throw new Exception\NotExistingKey('Key ' . $key . ' does not exist');
+        if (!$this->indexExists($index)) {
+            throw new Exception\NotExistingKey('Index ' . $index . ' does not exist');
         }
         $data = $this->data;
-        $data[$key] = $value;
+        $data[$index] = $value;
         return new self($this->type, $data);
     }
 
     /**
-     * @param int $key
+     * @param int $index
      * @return TypedCollection
      */
-    public function withoutValue(int $key): TypedCollection
+    public function withoutIndex(int $index): TypedCollection
     {
-        if (!$this->exists($key)) {
-            throw new Exception\NotExistingKey('Key ' . $key . ' does not exist');
+        if (!$this->indexExists($index)) {
+            throw new Exception\NotExistingKey('Index ' . $index . ' does not exist');
         }
         $data = $this->data;
-        unset($data[$key]);
+        unset($data[$index]);
+        return new self($this->type, $data);
+    }
+
+    /**
+     * @param mixed $element
+     * @return TypedCollection
+     */
+    public function withValue($element): TypedCollection
+    {
+        if (!$this->isValidElement($this->type, $element)) {
+            throw new Exception\InvalidData('Wrong element type: ' . $this->getType($element));
+        }
+        $data = $this->data;
+        array_push($data, $element);
+        return new self($this->type, $data);
+    }
+
+    /**
+     * @param mixed $element
+     * @return TypedCollection
+     */
+    public function withValueAtBeginning($element)
+    {
+        if (!$this->isValidElement($this->type, $element)) {
+            throw new Exception\InvalidData('Wrong element type: ' . $this->getType($element));
+        }
+        $data = $this->data;
+        array_unshift($data, $element);
         return new self($this->type, $data);
     }
 
@@ -98,7 +126,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return $this->exists($offset);
+        return $this->indexExists($offset);
     }
 
     /**
@@ -111,7 +139,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
     }
 
     /**
-     * @see TypedCollection::set
+     * @see TypedCollection::withValueAtIndex
      * @param mixed $offset
      * @param mixed $value
      * @return void
@@ -119,17 +147,17 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
-        throw new Exception\MutatedState('Cannot set a value via array access, use "set" method');
+        throw new Exception\MutatedState('Cannot set a value via array access, use "withValueAtIndex" method');
     }
 
     /**
-     * @see TypedCollection::unset
+     * @see TypedCollection::withoutIndex
      * @param mixed $offset
      * @return void
      */
     public function offsetUnset($offset)
     {
-        throw new Exception\MutatedState('Cannot unset a value via array access, use "unset" method');
+        throw new Exception\MutatedState('Cannot unset a value via array access, use "withoutIndex" method');
     }
 
     /**

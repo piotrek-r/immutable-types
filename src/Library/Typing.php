@@ -9,6 +9,11 @@ namespace OwlLabs\Type\Library;
  */
 trait Typing
 {
+    private static $aliases = [
+        'int' => 'integer',
+        'double' => 'float',
+    ];
+
     /**
      * @param string $type
      * @return bool
@@ -34,13 +39,20 @@ trait Typing
     }
 
     /**
-     * @param string $type
+     * @param string $expectedType
      * @param mixed $element
      * @return bool
      */
-    protected function isValidElement(string $type, $element): bool
+    protected function isValidElement(string $expectedType, $element): bool
     {
-        return $this->getType($element) === $type;
+        $elementType = $this->getType($element);
+        if ($expectedType === $elementType) {
+            return true;
+        }
+        if (array_key_exists($expectedType, self::$aliases) && $elementType === self::$aliases[$expectedType]) {
+            return true;
+        }
+        return false;
     }
 
     /**
