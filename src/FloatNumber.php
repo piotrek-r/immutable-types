@@ -8,7 +8,7 @@ namespace OwlLabs\Type;
  *
  * @package OwlLabs\Type
  */
-class IntegerFloat implements \JsonSerializable
+class FloatNumber implements \JsonSerializable
 {
     /**
      * @var float
@@ -17,9 +17,9 @@ class IntegerFloat implements \JsonSerializable
 
     /**
      * @param string $value
-     * @return IntegerFloat
+     * @return FloatNumber
      */
-    public static function fromString(string $value): IntegerFloat
+    public static function fromString(string $value): FloatNumber
     {
         return new self((float)$value);
     }
