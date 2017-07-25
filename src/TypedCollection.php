@@ -105,11 +105,89 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
     }
 
     /**
+     * @param string $targetType
+     * @param \Closure $callable
+     * @return TypedCollection
+     */
+    public function map(string $targetType, \Closure $callable): TypedCollection
+    {
+        return new self($targetType, array_map($callable, $this->getData()));
+    }
+
+    /**
+     * @param \Closure $callable
+     * @param mixed $initial
+     * @return mixed
+     */
+    public function reduce(\Closure $callable, $initial = null)
+    {
+        return array_reduce($this->getData(), $callable, $initial);
+    }
+
+    /**
+     * @param \Closure $callable
+     * @param int $flag
+     * @return TypedCollection
+     */
+    public function filter(\Closure $callable, int $flag = 0): TypedCollection
+    {
+        return new self($this->type, array_filter($this->getData(), $callable, $flag));
+    }
+
+    /**
+     * @param \Closure $callable
+     * @return bool
+     */
+    public function any(\Closure $callable): bool
+    {
+        foreach ($this->getData() as $datum) {
+            if ($callable($datum)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * An alias for any
+     *
+     * @see self::any
+     * @param \Closure $callable
+     * @return bool
+     */
+    public function some(\Closure $callable): bool
+    {
+        return $this->any($callable);
+    }
+
+    /**
+     * @param \Closure $callable
+     * @return bool
+     */
+    public function all(\Closure $callable): bool
+    {
+        foreach ($this->getData() as $datum) {
+            if (!$callable($datum)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * @return array
      */
     public function getData(): array
     {
         return $this->data;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return $this->count() === 0;
     }
 
     /**
