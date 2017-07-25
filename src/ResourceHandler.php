@@ -19,10 +19,10 @@ class ResourceHandler
      * @param string $filename
      * @param string $mode
      * @param bool|null $useIncludePath
-     * @param mixed $context5
+     * @param resource $context
      * @return ResourceHandler
      */
-    public static function open(string $filename, string $mode, bool $useIncludePath = null, $context = null)
+    public static function open(string $filename, string $mode, bool $useIncludePath = null, resource $context = null)
     {
         return new self(fopen($filename, $mode, $useIncludePath, $context));
     }
