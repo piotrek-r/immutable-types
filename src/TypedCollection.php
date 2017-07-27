@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type;
+namespace PiotrekR\Type;
 
 /**
  * Class TypedCollection
- * @package OwlLabs\Type
+ *
+ * @package PiotrekR\Type
  */
 class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
 {

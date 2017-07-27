@@ -1,13 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type;
+namespace PiotrekR\Type;
 
 /**
- * Immutable wrapper for an boolean type
- * @package OwlLabs\Type
+ * Immutable wrapper for a boolean type
+ *
+ * @package PiotrekR\Type
  */
-class Logical implements \JsonSerializable
+class Boolean implements \JsonSerializable
 {
     /**
      * @var bool
@@ -40,9 +41,9 @@ class Logical implements \JsonSerializable
     }
 
     /**
-     * @return Logical
+     * @return Boolean
      */
-    public function invert(): Logical
+    public function invert(): Boolean
     {
         return new self(!$this->value());
     }

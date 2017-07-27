@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type\Library;
+namespace PiotrekR\Type\Library;
 
 /**
  * Trait Typing
- * @package OwlLabs\Type\Library
+ *
+ * @package PiotrekR\Type\Library
  */
 trait Typing
 {

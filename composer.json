@@ -1,8 +1,8 @@
 {
-  "name": "owl-labs/immutable-types",
+  "name": "piotrek-r/immutable-types",
   "description": "Wrapper classes for some PHP types.",
   "type": "library",
-  "homepage": "https://github.com/owl-labs/immutable-types",
+  "homepage": "https://github.com/piotrek-r/immutable-types",
   "license": "MIT",
   "authors": [
     {
@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "OwlLabs\\Type\\": "src"
+      "PiotrekR\\Type\\": "src"
     }
   },
   "scripts": {

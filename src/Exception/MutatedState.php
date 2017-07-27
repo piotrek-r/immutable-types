@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type\Exception;
+namespace PiotrekR\Type\Exception;
 
 /**
  * Class MutatedState
- * @package OwlLabs\Type\Exception
+ *
+ * @package PiotrekR\Type\Exception
  */
 class MutatedState extends \RuntimeException
 {

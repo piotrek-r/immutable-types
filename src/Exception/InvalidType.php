@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type\Exception;
+namespace PiotrekR\Type\Exception;
 
 /**
  * Class InvalidType
- * @package OwlLabs\Type\Exception
+ * @package PiotrekR\Type\Exception
  */
 class InvalidType extends \InvalidArgumentException
 {

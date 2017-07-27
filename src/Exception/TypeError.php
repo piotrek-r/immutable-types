@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type\Exception;
+namespace PiotrekR\Type\Exception;
 
 /**
  * Class TypeError
- * @package OwlLabs\Type\Exception
+ *
+ * @package PiotrekR\Type\Exception
  */
 class TypeError extends \TypeError
 {

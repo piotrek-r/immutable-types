@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace OwlLabs\Type;
+namespace PiotrekR\Type;
 
 /**
  * Immutable wrapper for an integer type
  *
- * @package OwlLabs\Type
+ * @package PiotrekR\Type
  */
 class IntegerNumber implements \JsonSerializable
 {
