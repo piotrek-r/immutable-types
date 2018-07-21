@@ -21,7 +21,7 @@ class IntegerNumber implements \JsonSerializable
      */
     public static function fromString(string $value): IntegerNumber
     {
-        return new self((int)$value);
+        return new static((int)$value);
     }
 
     /**

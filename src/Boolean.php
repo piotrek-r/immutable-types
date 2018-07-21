@@ -45,6 +45,6 @@ class Boolean implements \JsonSerializable
      */
     public function invert(): Boolean
     {
-        return new self(!$this->value());
+        return new static(!$this->value());
     }
 }

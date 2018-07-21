@@ -21,7 +21,7 @@ class FloatNumber implements \JsonSerializable
      */
     public static function fromString(string $value): FloatNumber
     {
-        return new self((float)$value);
+        return new static((float)$value);
     }
 
     /**

@@ -50,7 +50,7 @@ trait Typing
         if ($expectedType === $elementType) {
             return true;
         }
-        if (array_key_exists($expectedType, self::$aliases) && $elementType === self::$aliases[$expectedType]) {
+        if (array_key_exists($expectedType, static::$aliases) && $elementType === static::$aliases[$expectedType]) {
             return true;
         }
         return false;

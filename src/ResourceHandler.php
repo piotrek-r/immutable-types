@@ -24,7 +24,7 @@ class ResourceHandler
      */
     public static function open(string $filename, string $mode, bool $useIncludePath = null, resource $context = null)
     {
-        return new self(fopen($filename, $mode, $useIncludePath, $context));
+        return new static(fopen($filename, $mode, $useIncludePath, $context));
     }
 
     /**

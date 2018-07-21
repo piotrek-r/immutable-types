@@ -60,7 +60,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
         }
         $data = $this->data;
         $data[$index] = $value;
-        return new self($this->type, $data);
+        return new static($this->type, $data);
     }
 
     /**
@@ -74,7 +74,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
         }
         $data = $this->data;
         unset($data[$index]);
-        return new self($this->type, $data);
+        return new static($this->type, $data);
     }
 
     /**
@@ -88,7 +88,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
         }
         $data = $this->data;
         array_push($data, $element);
-        return new self($this->type, $data);
+        return new static($this->type, $data);
     }
 
     /**
@@ -102,7 +102,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
         }
         $data = $this->data;
         array_unshift($data, $element);
-        return new self($this->type, $data);
+        return new static($this->type, $data);
     }
 
     /**
@@ -112,7 +112,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      */
     public function map(string $targetType, \Closure $callable): TypedCollection
     {
-        return new self($targetType, array_map($callable, $this->getData()));
+        return new static($targetType, array_map($callable, $this->getData()));
     }
 
     /**
@@ -132,7 +132,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
      */
     public function filter(\Closure $callable, int $flag = 0): TypedCollection
     {
-        return new self($this->type, array_filter($this->getData(), $callable, $flag));
+        return new static($this->type, array_filter($this->getData(), $callable, $flag));
     }
 
     /**
@@ -152,7 +152,7 @@ class TypedCollection implements \Countable, \IteratorAggregate, \ArrayAccess
     /**
      * An alias for any
      *
-     * @see self::any
+     * @see static::any
      * @param \Closure $callable
      * @return bool
      */
